@@ -79,6 +79,8 @@ angular.module('listings').controller('ListingsController', ['$scope', '$locatio
         successfully finished, navigate back to the 'listing.list' state using $state.go(). If an error
         occurs, pass it to $scope.error.
        */
+       $scope.error = null;
+       var id = $stateParams.listingId;
        if (!isValid) {
          $scope.$broadcast('show-errors-check-validity', 'articleForm');
          return false;
@@ -107,7 +109,7 @@ angular.module('listings').controller('ListingsController', ['$scope', '$locatio
                 $scope.err = 'Unable to delete listing!\n' + err;
               });
             };
-    
+
 
     /* Bind the success message to the scope if it exists as part of the current state */
     if($stateParams.successMessage) {
